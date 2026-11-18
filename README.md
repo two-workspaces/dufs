@@ -55,7 +55,7 @@ Large uploads and downloads can be resumed.
 
 - **Login:** built from `USERNAME` and `PASSWORD` on every boot, with read and write on everything. The browser UI and WebDAV both use basic auth over Railway's HTTPS. A password holding `|` or `@/`, which dufs's rule format can't carry, is stored as a SHA-512 hash instead.
 - **Never open by accident:** if `PASSWORD` is emptied, the service still starts but with a random one-off password printed in the deploy logs, not with open access.
-- **Permissions:** upload, delete, search and folder-as-zip are on. Symlinks out of the served folder are off.
+- **Permissions:** upload, delete, search, folder-as-zip and `?hash` (SHA-256 of a file) are on. Symlinks out of the served folder are off.
 - **Volume:** mounted at `/data`. The volume's own `lost+found` folder is hidden from listings.
 - **Memory:** dufs itself needs a few MB. Linux keeps files it has served in its page cache, which Railway counts as the service's memory, so the template drops that cache for served files every 15 minutes.
 - **Healthcheck:** `/__dufs__/health`, which needs no login.

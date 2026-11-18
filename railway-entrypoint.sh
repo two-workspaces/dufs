@@ -15,7 +15,7 @@ mkdir -p "$ROOT"
 [ -w "$ROOT" ] || log "warning: $ROOT is not writable, uploads will fail (is the volume mounted?)"
 
 set -- "$ROOT" --port "$PORT" \
-  --allow-upload --allow-delete --allow-search --allow-archive
+  --allow-upload --allow-delete --allow-search --allow-archive --allow-hash
 
 # Railway volumes carry a lost+found folder at their root; keep it out of the listing.
 # A --hidden flag replaces DUFS_HIDDEN entirely, so fold the user's value in.
